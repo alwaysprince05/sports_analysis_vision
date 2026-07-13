@@ -1,13 +1,13 @@
 # Sports Computer Vision Projects
 
-A collection of sports computer vision projects built for learning, experimentation, and sports analytics using modern AI and computer vision techniques.
+A collection of sports computer vision projects for learning and match analytics.
 
 These projects demonstrate player detection, object tracking, team classification, heatmap generation, and match analytics from broadcast sports footage.
 
 ## Projects
 
 ### 1. Basketball Match Analytics
-Real-time basketball analytics system for tracking players, ball possession, movement patterns, and team activity.
+Real-time basketball analytics for tracking players, ball possession, movement patterns, and team activity.
 
 **Features**
 - Player Detection
@@ -22,7 +22,7 @@ Real-time basketball analytics system for tracking players, ball possession, mov
 
 Run:
 ```bash
-python basketball_match_analytics.py
+python basketball_match_analytics/basketball.py
 ```
 
 ### 2. Hockey Match Analytics
@@ -39,11 +39,11 @@ Computer vision system for tracking hockey players and puck movement.
 
 Run:
 ```bash
-python hockey_match_analytics.py
+python hockey_match_analytics/hockey.py
 ```
 
 ### 3. Volleyball Rally Analytics
-Sports analytics system for analyzing rallies, spikes, and player movement.
+Analytics system for analyzing rallies, spikes, and player movement.
 
 **Features**
 - Player Detection
@@ -57,7 +57,7 @@ Sports analytics system for analyzing rallies, spikes, and player movement.
 
 Run:
 ```bash
-python volleyball_rally_analytics.py
+python volleyball_analytics/volleyball.py
 ```
 
 ## Technologies
@@ -75,9 +75,9 @@ python volleyball_rally_analytics.py
 pip install ultralytics opencv-python torch torchvision numpy matplotlib scipy
 ```
 
-## Developer / Creator
+## Developer / Owner
 
-**tubakhxn**
+**alwaysprince05**
 
 ## License
 
