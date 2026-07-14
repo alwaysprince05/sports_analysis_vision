@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportsVision AI - Multi-Sport Match Analytics</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- GitHub Markdown CSS for Doc tab -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-mode">
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 4C14.07 4 15.93 4.83 17.29 6.17L6.17 17.29C4.83 15.93 4 14.07 4 12C4 7.58 7.58 4 12 4ZM12 20C9.93 20 8.07 19.17 6.71 17.83L17.83 6.71C19.17 8.07 20 9.93 20 12C20 16.42 17.42 20 12 20Z" fill="url(#brand-grad)"/>
+            <defs>
+              <linearGradient id="brand-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00ffcc" />
+                <stop offset="100%" stop-color="#0066ff" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>SportsVision <span class="accent-text">AI</span></h1>
+          <span class="version">v3.1 Pro</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Match Engines</div>
+        <ul>
+          <li class="nav-item active" data-sport="basketball">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M6.2 6.2c2.4 2.4 2.4 6.4 0 8.8M17.8 6.2c-2.4 2.4-2.4 6.4 0 8.8M2 12h20M12 2v20"/></svg>
+            <span>Basketball Analytics</span>
+            <span class="badge active-badge">Live</span>
+          </li>
+          <li class="nav-item" data-sport="hockey">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M12 2v16M12 18a3 3 0 0 0 3-3h-6a3 3 0 0 0 3 3zM10 5.5a2.5 2.5 0 1 0-5 0M14 5.5a2.5 2.5 0 1 1 5 0"/></svg>
+            <span>Hockey Tracking</span>
+          </li>
+          <li class="nav-item" data-sport="volleyball">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2 12h20"/></svg>
+            <span>Volleyball Rally</span>
+          </li>
+        </ul>
+
+        <div class="nav-section-title">Workspace</div>
+        <ul>
+          <li class="nav-item" data-tab="documentation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Project Docs</span>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="owner-info">
+          <div class="avatar">AP</div>
+          <div class="details">
+            <div class="name">alwaysprince05</div>
+            <div class="role">Developer / Owner</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      
+      <!-- Top Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <h2 id="current-sport-title">Basketball Match Analytics</h2>
+          <p id="current-sport-desc" class="text-muted">Real-time player tracking, possession control, and kinetic team metrics.</p>
+        </div>
+        
+        <div class="header-right">
+          <div class="status-indicator">
+            <span class="status-pulse"></span>
+            <span class="status-text" id="engine-status">Engine Idle</span>
+          </div>
+          
+          <button class="btn btn-secondary" id="btn-upload">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            <span>Upload Match</span>
+          </button>
+          
+          <button class="btn btn-primary" id="btn-toggle-engine">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Start Analysis</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Layout Grid -->
+      <div class="dashboard-grid" id="main-dashboard-view">
+        
+        <!-- Center Panel: Video Visualizer & HUD -->
+        <div class="panel col-span-8 flex flex-col no-padding relative visualizer-panel">
+          <div class="visualizer-header">
+            <div class="file-info">
+              <span class="file-tag">INPUT</span>
+              <span class="file-name" id="active-video-name">demo_basketball_court.mp4</span>
+            </div>
+            
+            <div class="visualizer-hud-metrics">
+              <div class="hud-item">
+                <span class="hud-label">FPS</span>
+                <span class="hud-val monospace" id="hud-fps">0.0</span>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">FRAME</span>
+                <span class="hud-val monospace" id="hud-frame">0 / 0</span>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">DETECTIONS</span>
+                <span class="hud-val monospace" id="hud-detections">0</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Visualizer Container -->
+          <div class="video-container" id="drop-zone">
+            <!-- Canvas Overlay for CV tracking -->
+            <canvas id="cv-canvas"></canvas>
+            
+            <!-- Hidden native video element (if user uploads a video, we render its frames to canvas) -->
+            <video id="source-video" style="display: none;" playsinline loop muted></video>
+
+            <!-- Video Empty State Placeholder / Drag drop area -->
+            <div class="visualizer-overlay" id="visualizer-placeholder">
+              <div class="placeholder-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <h3>Computer Vision Processing Simulator</h3>
+              <p class="text-muted">Click "Start Analysis" to run the high-fidelity demo tracking, or drag and drop a sports video to process it.</p>
+              <div class="upload-area">
+                <input type="file" id="video-file-input" accept="video/*" style="display: none;">
+                <label for="video-file-input" class="btn btn-secondary">Select Video File</label>
+              </div>
+            </div>
+            
+            <!-- Loading Indicator for video analysis -->
+            <div class="cv-loading-overlay" id="loading-overlay" style="display: none;">
+              <div class="spinner"></div>
+              <h4>YOLOv8 Engine Initializing...</h4>
+              <p class="text-muted monospace" id="loading-subtext">Loading weights & configuring device...</p>
+            </div>
+          </div>
+          
+          <!-- Visualizer Controls -->
+          <div class="visualizer-controls">
+            <button class="ctrl-btn" id="ctrl-play-pause" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="ctrl-btn" id="ctrl-stop" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+            </button>
+            <div class="timeline-container">
+              <span class="time-label monospace" id="time-current">00:00</span>
+              <input type="range" class="timeline-slider" id="timeline" min="0" max="100" value="0" disabled>
+              <span class="time-label monospace" id="time-total">00:00</span>
+            </div>
+            <button class="ctrl-btn" id="ctrl-volume" title="Toggle audio / visual alerts">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Right Panel: Tactical Board & Telemetry -->
+        <div class="panel col-span-4 flex flex-col">
+          <div class="panel-header">
+            <h3>Tactical Court Map</h3>
+            <span class="panel-subtitle">2D Player Coordinate Projection</span>
+          </div>
+          
+          <!-- Tactical Minimap Field -->
+          <div class="minimap-container">
+            <div class="field-bg" id="minimap-field">
+              <!-- Field Canvas (Basketball, Hockey, Volleyball outlines) -->
+              <canvas id="minimap-canvas"></canvas>
+            </div>
+          </div>
+          
+          <div class="court-telemetry">
+            <div class="telemetry-row">
+              <span class="label">Optical Flow Motion</span>
+              <span class="val monospace" id="telemetry-flow">dx: 0.0, dy: 0.0</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="label">Camera Drift Offset</span>
+              <span class="val monospace" id="telemetry-drift">x: 0.0m, y: 0.0m</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Stats Panel -->
+        <!-- Left: Possession Control -->
+        <div class="panel col-span-4">
+          <div class="panel-header">
+            <h3>Ball Possession Analysis</h3>
+            <span class="panel-subtitle" id="possession-subtitle">Active possession tracker</span>
+          </div>
+          
+          <div class="possession-tracker-container">
+            <div class="possession-radial-wrap">
+              <svg class="radial-progress" width="120" height="120" viewBox="0 0 120 120">
+                <circle class="radial-bg" cx="60" cy="60" r="50" />
+                <circle class="radial-bar team-a-bar" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="157.08" />
+                <circle class="radial-bar team-b-bar" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16" />
+              </svg>
+              <div class="radial-center-val">
+                <span class="monospace" id="possession-val-pct">50%</span>
+                <span class="label" id="possession-active-team">TEAM A</span>
+              </div>
+            </div>
+            
+            <div class="possession-legend">
+              <div class="legend-item team-a-item">
+                <div class="color-dot team-a-dot"></div>
+                <div class="legend-details">
+                  <span class="legend-name" id="legend-team-a-name">Team A (Light)</span>
+                  <span class="legend-val monospace" id="legend-team-a-pct">50.0%</span>
+                </div>
+              </div>
+              <div class="legend-item team-b-item">
+                <div class="color-dot team-b-dot"></div>
+                <div class="legend-details">
+                  <span class="legend-name" id="legend-team-b-name">Team B (Blue)</span>
+                  <span class="legend-val monospace" id="legend-team-b-pct">50.0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle: Kinetics Telemetry Chart -->
+        <div class="panel col-span-5">
+          <div class="panel-header">
+            <h3>Kinetics & Speed Telemetry</h3>
+            <span class="panel-subtitle">Average Player Speed & Active Team Intensity</span>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="kinetics-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Right: Console Log / Event Feed -->
+        <div class="panel col-span-3 flex flex-col">
+          <div class="panel-header">
+            <h3>Detections Log</h3>
+            <span class="panel-subtitle">YOLOv8 Real-time Inference stream</span>
+          </div>
+          <div class="console-box" id="console-stream">
+            <div class="console-line system">[SYS] YOLOv8 tracking engine initialized.</div>
+            <div class="console-line system">[SYS] Select sport and start analysis to stream frame data.</div>
+          </div>
+        </div>
+
+        <!-- Heatmaps and Analytics Outputs (Collapsible/Viewable after processing) -->
+        <div class="panel col-span-12" id="heatmap-analytics-panel">
+          <div class="panel-header flex justify-between align-center">
+            <div>
+              <h3>Generated Heatmaps & Dashboards</h3>
+              <span class="panel-subtitle">Final post-match evaluation artifacts</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-secondary btn-sm" id="btn-export-csv">Export CSV Metrics</button>
+              <button class="btn btn-secondary btn-sm" id="btn-save-artifacts">Download Artifacts</button>
+            </div>
+          </div>
+          
+          <div class="artifacts-gallery">
+            <div class="artifact-card">
+              <div class="artifact-title">Team Spatial Heatmap</div>
+              <div class="artifact-media-container" id="heatmap-media-container">
+                <!-- Heatmap placeholder/generator canvas -->
+                <canvas id="heatmap-gen-canvas"></canvas>
+                <div class="artifact-overlay-message" id="heatmap-message">
+                  <span>Start tracking to view live spatial heatmap generation</span>
+                </div>
+              </div>
+              <div class="artifact-desc">
+                Distribution of Team A (Silver) and Team B (Blue) positions over time.
+              </div>
+            </div>
+            
+            <div class="artifact-card">
+              <div class="artifact-title">Performance Analytics Dashboard</div>
+              <div class="artifact-media-container" id="dashboard-media-container">
+                <!-- Dashboard Canvas -->
+                <canvas id="dashboard-gen-canvas"></canvas>
+                <div class="artifact-overlay-message" id="dashboard-message">
+                  <span>Start tracking to view dashboard visualization</span>
+                </div>
+              </div>
+              <div class="artifact-desc">
+                Kinetic intensity distribution and possession efficiency comparison.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Markdown Documentation Tab View (Hidden by default) -->
+      <div class="documentation-view" id="documentation-view" style="display: none;">
+        <div class="panel">
+          <div class="doc-header">
+            <h3>Project Documentation</h3>
+            <button class="btn btn-secondary btn-sm" id="btn-close-docs">Back to Dashboard</button>
+          </div>
+          <hr class="doc-divider">
+          <div class="markdown-body" id="docs-markdown-content">
+            Loading project documentation...
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+  
+  <!-- Marked parser script for Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
