@@ -13,6 +13,7 @@ pinned: false
 
 ### Multi-Sport Computer Vision & Match Analytics Platform
 
+[![Live App](https://img.shields.io/badge/🚀_Live_App-View_on_HuggingFace-FF9D00?style=for-the-badge&logoColor=white)](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![C++](https://img.shields.io/badge/C++-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-FF6D00?style=for-the-badge)](https://ultralytics.com)
@@ -20,6 +21,8 @@ pinned: false
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
 *Real-time player tracking · possession analysis · kinetic telemetry · heatmap generation*
+
+### 👉 [View Live App →](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)
 
 </div>
 
@@ -29,13 +32,14 @@ pinned: false
 
 ![SportsVision AI Dashboard](dashboard.png)
 
-> **The interactive web dashboard** — running live at `http://localhost:8000` — shows the full CV pipeline in action with YOLO-style bounding boxes, real-time speed telemetry, tactical court minimap, possession analysis, and a detections console. Switch between **Basketball**, **Hockey**, and **Volleyball** from the sidebar. Drop any `.mp4` file to run the pipeline on your own footage.
+> **The interactive web dashboard** — live at **[huggingface.co/spaces/alwaysprince05/sports-analysis-vision](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)** — shows the full CV pipeline in action with YOLO-style bounding boxes, real-time speed telemetry, tactical court minimap, possession analysis, and a detections console. Switch between **Basketball**, **Hockey**, and **Volleyball** from the sidebar. Drop any `.mp4` file to run the pipeline on your own footage.
 
 ---
 
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Live Demo](#-live-demo)
 - [Projects](#-projects)
   - [Basketball Match Analytics](#1-basketball-match-analytics)
   - [Hockey Match Analytics](#2-hockey-match-analytics)
@@ -45,6 +49,7 @@ pinned: false
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Output Files](#-output-files)
+- [Project Structure](#-project-structure)
 - [Developer](#-developer--owner)
 
 ---
@@ -61,6 +66,20 @@ SportsVision AI is a collection of production-grade computer vision pipelines fo
 - **Camera motion compensation** via optical flow
 
 All three pipelines share the same core architecture and ship with an **interactive browser dashboard** that visualises the CV output live.
+
+---
+
+## 🚀 Live Demo
+
+The full dashboard is deployed and accessible directly in your browser — no installation required:
+
+| | |
+|---|---|
+| 🌐 **Live URL** | **[huggingface.co/spaces/alwaysprince05/sports-analysis-vision](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)** |
+| 🏀 **Sports** | Basketball · Hockey · Volleyball |
+| 🎮 **Controls** | Play / Pause / Seek / Sport Switch / CSV Export |
+| 📁 **Upload** | Drag & drop your own `.mp4` footage |
+| 💻 **Requires** | Just a modern browser — no Python, no GPU |
 
 ---
 
@@ -138,7 +157,7 @@ python volleyball_analytics/volleyball.py --input match.mp4
 
 ## 🌐 Web Dashboard Features
 
-The interactive dashboard at `http://localhost:8000` provides:
+The interactive dashboard — live at **[huggingface.co/spaces/alwaysprince05/sports-analysis-vision](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)** — provides:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -158,14 +177,7 @@ The interactive dashboard at `http://localhost:8000` provides:
 └───────────────────────────────┴──────────────────────────────────┘
 ```
 
-**Start the dashboard:**
-```bash
-cd sports_analysis_vision
-python3 -m http.server 8000
-# open http://localhost:8000
-```
-
-**Controls:**
+**Dashboard Controls:**
 
 | Action | Result |
 |--------|--------|
@@ -176,6 +188,14 @@ python3 -m http.server 8000
 | Timeline slider | Seek to any frame |
 | Export CSV | Download speed telemetry spreadsheet |
 | Download Artifacts | Save heatmap PNG + dashboard card |
+
+**Run locally:**
+```bash
+git clone https://github.com/alwaysprince05/sports_analysis_vision.git
+cd sports_analysis_vision
+python3 -m http.server 8000
+# open http://localhost:8000
+```
 
 ---
 
@@ -192,6 +212,7 @@ python3 -m http.server 8000
 | C++ Implementation | OpenCV C++17 (`basketball_match_analytics.cpp`, etc.) |
 | Web Dashboard | HTML5 Canvas · Vanilla CSS · Vanilla JS |
 | Animation | `requestAnimationFrame` · `ResizeObserver` · View Transitions API |
+| Hosting | [Hugging Face Spaces](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision) (Static SDK) |
 
 ---
 
@@ -221,7 +242,11 @@ g++ -std=c++17 volleyball_analytics/volleyball_analytics.cpp \
 
 ## 🚀 Usage
 
-### Python (recommended)
+### Web Dashboard (no install — live on Hugging Face)
+> 🌐 **[huggingface.co/spaces/alwaysprince05/sports-analysis-vision](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)**  
+> Click "Start Analysis" and switch between sports from the sidebar. No Python or GPU needed.
+
+### Python Pipeline
 ```bash
 # Basketball
 python basketball_match_analytics/basketball.py --input your_match.mp4
@@ -233,12 +258,13 @@ python hockey_match_analytics/hockey.py --input your_match.mp4
 python volleyball_analytics/volleyball.py --input your_match.mp4
 ```
 
-### Web Dashboard (no video required — uses live demo simulation)
+### Run Dashboard Locally
 ```bash
+git clone https://github.com/alwaysprince05/sports_analysis_vision.git
 cd sports_analysis_vision
 python3 -m http.server 8000
+# open http://localhost:8000
 ```
-Then open **[http://localhost:8000](http://localhost:8000)** — the demo auto-starts immediately.
 
 ---
 
@@ -289,6 +315,7 @@ sports_analysis_vision/
 Developer · Owner · Computer Vision Engineer
 
 [![GitHub](https://img.shields.io/badge/GitHub-alwaysprince05-181717?style=for-the-badge&logo=github)](https://github.com/alwaysprince05)
+[![Live App](https://img.shields.io/badge/🚀_Live_App-HuggingFace_Space-FF9D00?style=for-the-badge)](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)
 
 </div>
 
@@ -303,5 +330,7 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 <div align="center">
 
 *Built with ❤️ for sports analytics and computer vision research.*
+
+**[🚀 View Live App on Hugging Face →](https://huggingface.co/spaces/alwaysprince05/sports-analysis-vision)**
 
 </div>
