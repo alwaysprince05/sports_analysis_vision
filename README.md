@@ -1,3 +1,12 @@
+---
+title: SportsVision AI
+emoji: 🏟️
+colorFrom: blue
+colorTo: indigo
+sdk: static
+pinned: false
+---
+
 <div align="center">
 
 # 🏟️ SportsVision AI
